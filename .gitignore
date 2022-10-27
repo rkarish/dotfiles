@@ -1,0 +1,15 @@
+.DS_Store
+peco
+neofetch
+iterm2
+htop
+gh
+flutter
+coc
+azure-datalake-store
+fish/completions
+fish/conf.d
+fish/functions
+fish/fish_variables
+nvim/plugin
+tmux/plugins
