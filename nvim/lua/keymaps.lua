@@ -14,7 +14,7 @@ keymap.set('n', '-', '<C-x>')
 keymap.set('n', '<C-a>', 'gg<S-v>G')
 
 -- New tab
-keymap.set('n', 'te', ':tabedit')
+keymap.set('n', 'tn', ':tabnew<Return>')
 
 -- Split window
 keymap.set('n', 'ss', ':split<Return><C-w>w')

@@ -26,7 +26,15 @@ export PATH="$PATH:/usr/local/share/dotnet"
 export PATH="$PATH:/Library/Apple/usr/bin"
 export PATH="$PATH:/Users/rkarish/.pyenv/shims"
 export PATH="$PATH:/Users/rkarish/.local/bin"
+export PATH="$PATH:/opt/homebrew/opt/openldap/bin"
+export PATH="$PATH:/opt/homebrew/opt/openldap/sbin"
+export PATH="$PATH:/opt/homebrew/opt/openssl@3/bin"
+
 typeset -aU path
+
+# Editor
+export VISUAL=nvim
+export EDITOR=nvim
 
 # Aliases
 alias ls="exa -lha -s name --icons --git --classify"
@@ -35,7 +43,7 @@ alias vi="nvim"
 
 # Airflow
 export AIRFLOW_HOME="~/airflow"
-source /Users/rkarish/Projects/apache/airflow/dev/breeze/autocomplete/breeze-complete-zsh.sh
+source /Users/rkarish/Projects/airflow/dev/breeze/autocomplete/breeze-complete-zsh.sh
 
 # Homebrew
 alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
@@ -43,6 +51,11 @@ export HOMEBREW_NO_ENV_HINTS=True
 
 # asdf
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
+
+# virtualenvwrapper
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Projects
+source /opt/homebrew/bin/virtualenvwrapper.sh
 
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
@@ -52,6 +65,22 @@ eval "$(pyenv init -)"
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# llvm
-export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
+# OpenBLAS
+export OPENBLAS="$(brew --prefix openblas)"
+
+# Compiler flags
+export LDFLAGS="-L/opt/homebrew/opt/llvm/lib -L/opt/homebrew/opt/libffi/lib -L/opt/homebrew/opt/openldap/lib -L/opt/homebrew/opt/openblas/lib -L/opt/homebrew/opt/cyrus-sasl/lib -L/opt/homebrew/opt/openssl@3/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/llvm/include -I/opt/homebrew/opt/libffi/include -I/opt/homebrew/opt/openldap/include -I/opt/homebrew/opt/openblas/include -I/opt/homebrew/opt/cyrus-sasl/include -I/opt/homebrew/opt/openssl@3/include" 
+
+# Conda
+__conda_setup="$('/opt/homebrew/Caskroom/miniforge/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/conda.sh" ]; then
+        . "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/conda.sh"
+    else
+        export PATH="/opt/homebrew/Caskroom/miniforge/base/bin:$PATH"
+    fi
+fi
+unset __conda_setup

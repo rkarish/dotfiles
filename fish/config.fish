@@ -23,8 +23,13 @@ set -gx PATH /opt/homebrew/sbin $PATH
 set -gx PATH /opt/homebrew/opt/llvm/bin $PATH
 set -gx PATH /usr/local/share/dotnet $PATH
 set -gx PATH /Library/Apple/usr/bin $PATH
-set -gx PATH /Users/rkarish/.pyenv/shims $PATH
-set -gx PATH /Users/rkarish/.local/bin $PATH
+set -gx PATH $HOME/.pyenv/shims $PATH
+set -gx PATH $HOME/.local/bin $PATH
+set -gx PATH /opt/homebrew/opt/openssl@3/bin $PATH
+
+# Editor
+set -gx VISUAL nvim
+set -gx EDITOR nvim
 
 # Aliases
 alias ls "exa -lha -s name --icons --git --classify"
@@ -33,7 +38,7 @@ alias vi "nvim"
 
 # Airflow
 set -gx AIRFLOW_HOME ~/airflow
-source /Users/rkarish/Projects/apache/airflow/dev/breeze/autocomplete/breeze-complete-fish.sh
+source $HOME/Projects/airflow/dev/breeze/autocomplete/breeze-complete-fish.sh
 
 # Homebrew
 alias brew "env PATH=(string replace (pyenv root)/shims '' \"\$PATH\") brew"
@@ -47,6 +52,12 @@ set -Ux PYENV_ROOT $HOME/.pyenv
 set -U fish_user_paths $PYENV_ROOT/bin $fish_user_paths
 pyenv init - | source
 
-# llvm
-set -gx LDFLAGS "-L/opt/homebrew/opt/llvm/lib"
-set -gx CPPFLAGS "-I/opt/homebrew/opt/llvm/include"
+# OpenBLAS
+set -gx OPENBLAS "$(brew --prefix openblas)" 
+
+# Complier flags
+set -gx LDFLAGS "-L/opt/homebrew/opt/llvm/lib -L/opt/homebrew/opt/libffi/lib -L/opt/homebrew/opt/openldap/lib -L/opt/homebrew/opt/openblas/lib -L/opt/homebrew/opt/cyrus-sasl/lib -L/opt/homebrew/opt/openssl@3/lib"
+set -gx CPPFLAGS "-I/opt/homebrew/opt/llvm/include -I/opt/homebrew/opt/libffi/include -I/opt/homebrew/opt/openldap/include -I/opt/homebrew/opt/openblas/include -I/opt/homebrew/opt/cyrus-sasl/include -I/opt/homebrew/opt/openssl@3/include"
+
+# Conda
+eval /opt/homebrew/Caskroom/miniforge/base/bin/conda "shell.fish" "hook" $argv | source
