@@ -25,6 +25,8 @@ set -gx PATH /usr/local/share/dotnet $PATH
 set -gx PATH /Library/Apple/usr/bin $PATH
 set -gx PATH $HOME/.pyenv/shims $PATH
 set -gx PATH $HOME/.local/bin $PATH
+set -gx PATH /opt/homebrew/opt/openldap/bin $PATH
+set -gx PATH /opt/homebrew/opt/openldap/sbin $PATH
 set -gx PATH /opt/homebrew/opt/openssl@3/bin $PATH
 
 # Editor
@@ -53,11 +55,12 @@ set -U fish_user_paths $PYENV_ROOT/bin $fish_user_paths
 pyenv init - | source
 
 # OpenBLAS
-set -gx OPENBLAS "$(brew --prefix openblas)" 
+set -gx OPENBLAS "$(brew --prefix openblas)"
 
-# Complier flags
-set -gx LDFLAGS "-L/opt/homebrew/opt/llvm/lib -L/opt/homebrew/opt/libffi/lib -L/opt/homebrew/opt/openldap/lib -L/opt/homebrew/opt/openblas/lib -L/opt/homebrew/opt/cyrus-sasl/lib -L/opt/homebrew/opt/openssl@3/lib"
-set -gx CPPFLAGS "-I/opt/homebrew/opt/llvm/include -I/opt/homebrew/opt/libffi/include -I/opt/homebrew/opt/openldap/include -I/opt/homebrew/opt/openblas/include -I/opt/homebrew/opt/cyrus-sasl/include -I/opt/homebrew/opt/openssl@3/include"
+# Compiler flags
+set -gx LDFLAGS "-L/opt/homebrew/opt/openssl@3/lib -L/opt/homebrew/opt/llvm/lib"
+set -gx CPPFLAGS "-I/opt/homebrew/opt/openssl@3/include -I/opt/homebrew/opt/llvm/include"
 
 # Conda
-eval /opt/homebrew/Caskroom/miniforge/base/bin/conda "shell.fish" "hook" $argv | source
+status is-interactive &&
+  eval /opt/homebrew/Caskroom/miniforge/base/bin/conda "shell.fish" "hook" $argv | source

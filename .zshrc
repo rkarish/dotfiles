@@ -22,6 +22,7 @@ export PATH="$PATH:/usr/local/bin"
 export PATH="$PATH:/usr/local/sbin"
 export PATH="$PATH:/opt/homebrew/bin"
 export PATH="$PATH:/opt/homebrew/sbin"
+export PATH="$PATH:/opt/homebrew/opt/llvm/bin"
 export PATH="$PATH:/usr/local/share/dotnet"
 export PATH="$PATH:/Library/Apple/usr/bin"
 export PATH="$PATH:/Users/rkarish/.pyenv/shims"
@@ -68,9 +69,9 @@ eval "$(pyenv init -)"
 # OpenBLAS
 export OPENBLAS="$(brew --prefix openblas)"
 
-# Compiler flags
-export LDFLAGS="-L/opt/homebrew/opt/llvm/lib -L/opt/homebrew/opt/libffi/lib -L/opt/homebrew/opt/openldap/lib -L/opt/homebrew/opt/openblas/lib -L/opt/homebrew/opt/cyrus-sasl/lib -L/opt/homebrew/opt/openssl@3/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/llvm/include -I/opt/homebrew/opt/libffi/include -I/opt/homebrew/opt/openldap/include -I/opt/homebrew/opt/openblas/include -I/opt/homebrew/opt/cyrus-sasl/include -I/opt/homebrew/opt/openssl@3/include" 
+# Complier flags
+export LDFLAGS="-L/opt/homebrew/opt/openssl@3/lib -L/opt/homebrew/opt/llvm/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/openssl@3/include -I/opt/homebrew/opt/llvm/include"
 
 # Conda
 __conda_setup="$('/opt/homebrew/Caskroom/miniforge/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
