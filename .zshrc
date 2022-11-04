@@ -69,6 +69,9 @@ eval "$(pyenv init -)"
 # OpenBLAS
 export OPENBLAS="$(brew --prefix openblas)"
 
+# openssl
+export PKG_CONFIG_PATH="/opt/homebrew/opt/openssl@3/lib/pkgconfig"
+
 # Complier flags
 export LDFLAGS="-L/opt/homebrew/opt/openssl@3/lib -L/opt/homebrew/opt/llvm/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/openssl@3/include -I/opt/homebrew/opt/llvm/include"

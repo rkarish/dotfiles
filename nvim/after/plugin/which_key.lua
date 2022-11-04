@@ -63,7 +63,7 @@ which_key.setup(
       -- this is mostly relevant for key maps that start with a native binding
       -- most people should not need to change this
       i = { 'j', 'k' },
-      v = { 'j', 'k' },
+      v = { 'j', 'k' }
     },
     -- disable the WhichKey popup for certain buf types and file types.
     -- Disabled by deafult for Telescope

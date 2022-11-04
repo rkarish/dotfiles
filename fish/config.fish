@@ -4,7 +4,7 @@ set -gx TERM xterm-256color
 set -gx EDITOR nvim
 
 # Theme
-set -g theme_color_scheme terminal-dark
+set -g fish_config theme save "Catppuccin Macchiato"
 set -g fish_prompt_pwd_dir_length 1
 set -g theme_display_user yes
 set -g theme_hide_hostname no
@@ -57,10 +57,14 @@ pyenv init - | source
 # OpenBLAS
 set -gx OPENBLAS "$(brew --prefix openblas)"
 
+# openssl
+set -gx PKG_CONFIG_PATH "/opt/homebrew/opt/openssl@3/lib/pkgconfig"
+
 # Compiler flags
 set -gx LDFLAGS "-L/opt/homebrew/opt/openssl@3/lib -L/opt/homebrew/opt/llvm/lib"
 set -gx CPPFLAGS "-I/opt/homebrew/opt/openssl@3/include -I/opt/homebrew/opt/llvm/include"
 
 # Conda
+set -gx _CONDA_ROOT "/opt/homebrew/Caskroom/miniforge/base"
 status is-interactive &&
   eval /opt/homebrew/Caskroom/miniforge/base/bin/conda "shell.fish" "hook" $argv | source

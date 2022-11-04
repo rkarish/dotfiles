@@ -9,10 +9,10 @@ require('nvim-treesitter.configs').setup(
       disable = {}
     },
     ensure_installed = {
-      "python",
-      "lua",
-      "javascript",
-      "typescript"
+      'python',
+      'lua',
+      'javascript',
+      'typescript'
     },
     auto_install = true,
     autotag = {

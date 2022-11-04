@@ -2,7 +2,7 @@ require('nvim-tree').setup(
   {
     sort_by = 'case_sensitive',
     view = {
-      adaptive_size = false,
+      adaptive_size = true,
       relativenumber = true,
       mappings = {
         list = {
@@ -14,7 +14,11 @@ require('nvim-tree').setup(
       group_empty = true
     },
     filters = {
-      dotfiles = true
+      dotfiles = false
     }
   }
 )
+
+vim.cmd[[
+  hi NvimTreeNormal guibg=NONE ctermbg=NONE
+]]

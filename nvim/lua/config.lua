@@ -17,7 +17,7 @@ vim.scriptencoding = 'utf-8'
 vim.opt.encoding = 'utf-8'
 vim.opt.fileencoding = 'utf-8'
 
-vim.opt.mouse = 'n'
+vim.opt.mouse = 'a'
 vim.opt.shell = 'fish'
 vim.opt.inccommand = 'split'
 vim.opt.wildoptions = 'pum'
