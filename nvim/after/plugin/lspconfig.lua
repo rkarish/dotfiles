@@ -29,7 +29,6 @@ protocol.CompletionItemKind = {
   '', -- TypeParameter
 }
 
--- Set up completion using nvim_cmp with LSP source
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 lspconfig.pyright.setup{
