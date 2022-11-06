@@ -1,1 +1,1 @@
-require('dap-python').setup('/Users/rkarish/Projects/airflow-debugging/.venv/bin/python')
+require('dap-python').setup('/opt/homebrew/Caskroom/miniforge/base/bin/python')
