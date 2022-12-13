@@ -60,10 +60,6 @@ set -gx OPENBLAS "$(brew --prefix openblas)"
 # openssl
 set -gx PKG_CONFIG_PATH "/opt/homebrew/opt/openssl@3/lib/pkgconfig"
 
-# Compiler flags
-set -gx LDFLAGS "-L/opt/homebrew/opt/openssl@3/lib -L/opt/homebrew/opt/llvm/lib"
-set -gx CPPFLAGS "-I/opt/homebrew/opt/openssl@3/include -I/opt/homebrew/opt/llvm/include"
-
 # Conda
 set -gx _CONDA_ROOT "/opt/homebrew/Caskroom/miniforge/base"
 status is-interactive &&
